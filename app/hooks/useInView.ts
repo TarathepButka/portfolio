@@ -1,0 +1,34 @@
+"use client";
+
+import { useRef, useState, useEffect } from "react";
+
+/**
+ * Intersection Observer hook — triggers once when element enters viewport.
+ *
+ * @param threshold - Visibility threshold (0–1)
+ * @returns ref to attach to element, and boolean inView state
+ */
+export function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, inView };
+}

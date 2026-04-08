@@ -1,26 +1,397 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --neon-cyan: #00f0ff;
+  --neon-green: #39ff14;
+  --neon-purple: #bf00ff;
+  --neon-pink: #ff006e;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.02);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-neon-cyan: var(--neon-cyan);
+  --color-neon-green: var(--neon-green);
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-pink: var(--neon-pink);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ─── Base ─── */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(0, 240, 255, 0.3);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ─── Neon Text ─── */
+.neon-text {
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 7px var(--neon-cyan),
+    0 0 20px rgba(0, 240, 255, 0.4),
+    0 0 42px rgba(0, 240, 255, 0.2);
+}
+
+.neon-text-green {
+  color: var(--neon-green);
+  text-shadow:
+    0 0 7px var(--neon-green),
+    0 0 20px rgba(57, 255, 20, 0.4),
+    0 0 42px rgba(57, 255, 20, 0.2);
+}
+
+.neon-text-purple {
+  color: var(--neon-purple);
+  text-shadow:
+    0 0 7px var(--neon-purple),
+    0 0 20px rgba(191, 0, 255, 0.4);
+}
+
+.neon-text-pink {
+  color: var(--neon-pink);
+  text-shadow:
+    0 0 7px var(--neon-pink),
+    0 0 20px rgba(255, 0, 110, 0.4);
+}
+
+/* ─── Glass Card ─── */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 240, 255, 0.3);
+  box-shadow:
+    0 0 20px rgba(0, 240, 255, 0.08),
+    inset 0 0 20px rgba(0, 240, 255, 0.02);
+  transform: translateY(-4px);
+}
+
+/* ─── Neon Border Card ─── */
+.neon-border {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.neon-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--neon-cyan), transparent 50%, var(--neon-purple));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.neon-border:hover::before {
+  opacity: 1;
+}
+
+/* ─── Animated Grid Background ─── */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+/* ─── Floating Orbs ─── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: float 8s ease-in-out infinite;
+}
+
+.orb-white {
+  background: rgba(255, 255, 255, 0.8);
+}
+.orb-cyan {
+  background: var(--neon-cyan);
+}
+.orb-purple {
+  background: var(--neon-purple);
+}
+.orb-green {
+  background: var(--neon-green);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-40px) scale(1.1); }
+}
+
+/* ─── Section Title ─── */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.section-line {
+  height: 2px;
+  width: 80px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+  border-radius: 2px;
+  margin-bottom: 3rem;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+}
+
+/* ─── Skill Badge ─── */
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ccc;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.skill-badge:hover {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ─── Timeline ─── */
+.timeline-line {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple), transparent);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--background);
+  border: 2px solid var(--neon-cyan);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+  z-index: 1;
+}
+
+/* ─── Typewriter ─── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* ─── Fade In Animation ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+/* ─── Pulse Glow ─── */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.2);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-white {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 255, 255, 0.2);
+  }
+}
+
+.pulse-glow-white {
+  animation: pulse-glow-white 3s ease-in-out infinite;
+}
+
+/* ─── Scan Line ─── */
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scanline-overlay::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  opacity: 0.08;
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ─── Project Card Preview ─── */
+.project-preview {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  aspect-ratio: 16/9;
+  background: #111;
+}
+
+.project-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-preview:hover img {
+  transform: scale(1.05);
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.9));
+  opacity: 0;
+  transition: opacity 0.4s;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+}
+
+.project-preview:hover .project-overlay {
+  opacity: 1;
+}
+
+/* ─── Nav Dot Indicator ─── */
+.nav-link {
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 20px;
+  height: 2px;
+  background: var(--neon-cyan);
+  border-radius: 1px;
+  transition: transform 0.3s;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ─── Achievement Card ─── */
+.achievement-card {
+  position: relative;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(191, 0, 255, 0.05), rgba(0, 240, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  transition: all 0.4s;
+}
+
+.achievement-card:hover {
+  border-color: rgba(191, 0, 255, 0.3);
+  box-shadow: 0 0 30px rgba(191, 0, 255, 0.08);
+  transform: translateY(-4px);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
 }

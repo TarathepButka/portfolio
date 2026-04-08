@@ -1,0 +1,10 @@
+export { BackgroundEffects } from "./BackgroundEffects";
+export { Navbar } from "./Navbar";
+export { HeroSection } from "./HeroSection";
+export { AboutSection } from "./AboutSection";
+export { ExperienceSection } from "./ExperienceSection";
+export { ProjectsSection } from "./ProjectsSection";
+export { SkillsSection } from "./SkillsSection";
+export { AchievementsSection } from "./AchievementsSection";
+export { ContactSection } from "./ContactSection";
+export { Footer } from "./Footer";
