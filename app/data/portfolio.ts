@@ -9,7 +9,7 @@ import type { PortfolioData } from "@/app/types";
 export const portfolioData: PortfolioData = {
   /* ─── Navigation ─── */
   nav: [
-    { label: "Home", href: "#hero" },
+    { label: "Home", href: "/" },
     { label: "About", href: "#about" },
     { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },

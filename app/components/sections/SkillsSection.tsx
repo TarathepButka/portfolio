@@ -6,12 +6,12 @@ interface SkillsSectionProps {
 }
 
 /**
- * Skills Section — Skill Tree Panel
+ * Skills Section — Skills Panel
  * Categorized skill badges styled as learned abilities.
  */
 export function SkillsSection({ data }: SkillsSectionProps) {
   return (
-    <Section id="skills" title="Skill Tree">
+    <Section id="skills" title="Skills">
       <div className="space-y-10">
         {Object.entries(data).map(([category, skills]) => (
           <div key={category}>
