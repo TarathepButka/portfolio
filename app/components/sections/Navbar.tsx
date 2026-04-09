@@ -32,7 +32,7 @@ export function Navbar({ items }: NavbarProps) {
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <a
-          href="#hero"
+          href="/"
           className="text-sm font-semibold tracking-[0.2em] uppercase text-white"
           style={{ fontFamily: "var(--font-theme-mono)" }}
         >
