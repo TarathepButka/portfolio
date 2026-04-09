@@ -17,6 +17,19 @@ export function Navbar({ items }: NavbarProps) {
   const { activeSection, isScrolled } = useScrollSpy(items);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.history.pushState) {
+        window.history.pushState(null, "", "/");
+      }
+      setMobileMenuOpen(false);
+    } else if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+    }
+  };
+
   return (
     <nav
       id="nav-main"
@@ -33,6 +46,7 @@ export function Navbar({ items }: NavbarProps) {
         {/* Logo */}
         <a
           href="/"
+          onClick={(e) => handleLinkClick(e, "/")}
           className="text-sm font-semibold tracking-[0.2em] uppercase text-white"
           style={{ fontFamily: "var(--font-theme-mono)" }}
         >
@@ -47,6 +61,7 @@ export function Navbar({ items }: NavbarProps) {
             <a
               key={item.href}
               href={item.href}
+              onClick={(e) => handleLinkClick(e, item.href)}
               className={`nav-link font-medium ${
                 activeSection === item.href.replace("#", "")
                   ? "text-white active"
@@ -77,7 +92,7 @@ export function Navbar({ items }: NavbarProps) {
               key={item.href}
               href={item.href}
               className="text-gray-400 hover:text-white transition-colors text-sm py-3 px-4 border-b border-white/5 tracking-[0.1em] uppercase flex items-center gap-3"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleLinkClick(e, item.href)}
               style={{ animationDelay: `${i * 0.05}s` }}
             >
               <span className="text-[8px] opacity-40">◇</span>
