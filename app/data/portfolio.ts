@@ -32,9 +32,9 @@ export const portfolioData: PortfolioData = {
   /* ─── About ─── */
   about: {
     paragraphs: [
-      'I am a <highlight>Computer Engineering</highlight> student at <neon>Khon Kaen University</neon>, expecting to graduate in <highlight>April 2026</highlight>.',
-      "Continuous learning, problem-solving, and collaboration skills enable me to thrive in high-pressure environments and deliver satisfying outcomes.",
-      'I am dedicated to honing my technical expertise as a Software Developer while actively developing my leadership and project coordination skills. I aim to leverage my deep understanding of the development lifecycle to transition into a <green>Project Manager</green> role in the future.',
+      'I am a <highlight>Computer Engineering</highlight> graduate from <neon>Khon Kaen University</neon> with a solid foundation in software development and systems thinking. Having completed a 7-month Full Stack Developer internship, I have gained hands-on experience in building end-to-end web applications and collaborating within professional agile teams.',
+      'My approach is driven by a "never-stop-learning" mindset and proactive problem-solving, allowing me to thrive in high-pressure environments. I am eager to apply my technical skills in a real-world setting and am dedicated to honing my expertise as a Software Developer.',
+      'With a long-term goal of transitioning into <green>Project Management</green>, I am committed to delivering high-quality outcomes while continuously expanding my technical and leadership horizons.',
     ],
     infoCards: [
       {
@@ -59,6 +59,22 @@ export const portfolioData: PortfolioData = {
         "Architected and developed a Dynamic Form System for tax deduction claims, featuring database-driven UI rendering, complex validation logic, and secure file uploads to AWS S3.",
         "Engineered an automated employee offboarding system orchestrating secure data flows between NestJS, n8n, and FastAPI microservices.",
         "Automated the revocation of user access across AWS IAM, GitLab, Jira, and MongoDB.",
+        "Developed and executed comprehensive End-to-End (E2E) tests for all newly developed APIs to ensure code reliability, prevent regressions, and validate data integrity.",
+      ],
+      skills: [
+        "TypeScript",
+        "JavaScript",
+        "Python",
+        "React.js",
+        "NestJS",
+        "FastAPI",
+        "n8n",
+        "Docker",
+        "AWS S3",
+        "AWS IAM",
+        "Jira",
+        "System Architecture",
+        "Database Design",
       ],
     },
   ],
@@ -124,7 +140,6 @@ export const portfolioData: PortfolioData = {
       "React",
       "Next.js",
       "Flutter",
-      "Unity",
     ],
     "Databases & Cloud": [
       "PostgreSQL",
@@ -135,7 +150,7 @@ export const portfolioData: PortfolioData = {
       "AWS",
     ],
     "Tools & DevOps": ["Docker", "Git", "GitHub", "Postman", "Figma", "n8n"],
-    "Additional Expertise": ["Cisco IOS-XE", "SONiC", "Ansible", "VMware"],
+    "Additional Expertise": ["Cisco IOS-XE", "SONiC", "Ansible", "VMware", "Unity"],
   },
 
   /* ─── Achievements ─── */

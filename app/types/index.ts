@@ -30,6 +30,7 @@ export interface Experience {
   company: string;
   duration: string;
   bullets: string[];
+  skills?: string[];
 }
 
 /** Competition / award achievement */

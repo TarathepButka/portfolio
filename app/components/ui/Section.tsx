@@ -6,7 +6,7 @@ import { useInView } from "@/app/hooks";
 interface SectionProps {
   /** HTML id for anchor navigation */
   id: string;
-  /** Section title rendered with neon brackets */
+  /** Section title rendered-style */
   title?: string;
   /** Content inside the section */
   children: ReactNode;
@@ -15,8 +15,9 @@ interface SectionProps {
 }
 
 /**
- * Reusable animated section wrapper.
- * Handles scroll-triggered fade-in and consistent spacing.
+ * Section Wrapper — Status Window Panel
+ * Features angular borders, diamond title decorators,
+ * and scroll-triggered materialization effect.
  */
 export function Section({ id, title, children, className = "" }: SectionProps) {
   const { ref, inView } = useInView();
@@ -28,15 +29,16 @@ export function Section({ id, title, children, className = "" }: SectionProps) {
       className={`relative py-20 md:py-28 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full ${className}`}
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0)" : "translateY(40px)",
-        transition: "opacity 0.7s ease-out, transform 0.7s ease-out",
+        transform: inView ? "translateY(0)" : "translateY(30px)",
+        filter: inView ? "blur(0)" : "blur(4px)",
+        transition: "opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out",
       }}
     >
       {title && (
         <>
           <h2 className="section-title text-white">
-            <span className="neon-text">&lt;</span> {title}{" "}
-            <span className="neon-text">/&gt;</span>
+            <span className="opacity-30 text-xs mr-2">◇</span>
+            {title}
           </h2>
           <div className="section-line" />
         </>
