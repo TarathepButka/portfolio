@@ -56,7 +56,7 @@ export function Navbar({ items }: NavbarProps) {
         </a>
 
         {/* Desktop Nav — Menu Style */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-8">
           {items.map((item) => (
             <a
               key={item.href}
@@ -76,7 +76,7 @@ export function Navbar({ items }: NavbarProps) {
         {/* Mobile Toggle */}
         <button
           id="mobile-menu-toggle"
-          className="md:hidden text-white"
+          className="lg:hidden text-white"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -86,7 +86,7 @@ export function Navbar({ items }: NavbarProps) {
 
       {/* Mobile Menu — Panel Style */}
       {mobileMenuOpen && (
-        <div className="md:hidden px-6 pb-6 flex flex-col gap-1 bg-[rgba(5,5,8,0.95)] backdrop-blur-xl border-t border-white/5">
+        <div className="lg:hidden px-6 pb-6 pt-2 flex flex-col gap-1 bg-[rgba(5,5,8,0.95)] backdrop-blur-xl border-t border-white/5 max-h-[85vh] overflow-y-auto">
           {items.map((item, i) => (
             <a
               key={item.href}

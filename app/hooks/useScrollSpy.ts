@@ -19,6 +19,11 @@ export function useScrollSpy(navItems: NavItem[], scrollThreshold = 60) {
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > scrollThreshold);
 
+    if (window.scrollY < 100) {
+      setActiveSection("/");
+      return;
+    }
+
     const sectionIds = navItems.map((n) => n.href.replace("#", ""));
     for (let i = sectionIds.length - 1; i >= 0; i--) {
       const el = document.getElementById(sectionIds[i]);
