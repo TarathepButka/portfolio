@@ -149,7 +149,7 @@ export const portfolioData: PortfolioData = {
       "Firebase",
       "AWS",
     ],
-    "Tools & DevOps": ["Docker", "Git", "GitHub", "Postman", "Figma", "n8n"],
+    "Tools & DevOps": ["Docker", "Git", "GitHub", "GitLab", "Postman", "Figma", "n8n"],
     "Additional Expertise": ["Cisco IOS-XE", "SONiC", "Ansible", "VMware", "Unity"],
   },
 
