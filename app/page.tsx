@@ -11,6 +11,7 @@ import {
   ContactSection,
   Footer,
 } from "@/app/components/sections";
+import { ScrollToTop } from "@/app/components/ui";
 
 /**
  * Portfolio page — thin orchestrator.
@@ -38,6 +39,7 @@ export default function PortfolioPage() {
       <AchievementsSection data={achievements} />
       <ContactSection data={contact} />
       <Footer name={footer.name} tagline={footer.tagline} />
+      <ScrollToTop />
     </>
   );
 }

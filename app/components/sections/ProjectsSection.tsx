@@ -52,7 +52,6 @@ function ProjectCard({ project }: { project: Project }) {
         </p>
 
         {/* Tech Tags — Equipment Stats */}
-        <div className="theme-status-label mb-2">TECH STACK</div>
         <div className="flex flex-wrap gap-2 mb-4">
           {project.tech.map((t) => (
             <span

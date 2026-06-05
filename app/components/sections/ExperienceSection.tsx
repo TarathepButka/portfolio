@@ -53,12 +53,11 @@ export function ExperienceSection({ data }: ExperienceSectionProps) {
               {/* Skills Acquired */}
               {exp.skills && exp.skills.length > 0 && (
                 <div className="mt-6 pt-5 border-t border-white/5">
-                  <div className="theme-status-label mb-3">◇ SKILLS ACQUIRED</div>
                   <div className="flex flex-wrap gap-2">
                     {exp.skills.map((skill, k) => (
-                      <span 
-                        key={k} 
-                        className="px-2.5 py-1 text-[0.7rem] bg-white/5 border border-white/10 text-white/70 tracking-wider whitespace-nowrap hover:bg-white/10 transition-colors" 
+                      <span
+                        key={k}
+                        className="px-2.5 py-1 text-[0.7rem] bg-white/5 border border-white/10 text-white/70 tracking-wider whitespace-nowrap hover:bg-white/10 transition-colors"
                         style={{ borderRadius: "2px" }}
                       >
                         {skill}

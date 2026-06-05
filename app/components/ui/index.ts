@@ -14,3 +14,4 @@ export {
   CloseIcon,
   IconByName,
 } from "./icons";
+export { ScrollToTop } from "./ScrollToTop";

@@ -20,11 +20,11 @@ export const portfolioData: PortfolioData = {
 
   /* ─── Hero ─── */
   hero: {
-    name: "Hi, I'm",
+    name: "",
     highlightName: "Fongt",
     typedRoles: ["Software Developer", "Full Stack Developer"],
     tagline:
-      "Software Developer passionate about building web and mobile applications. Eager to learn new technologies to improve productivity and focus on understanding users to deliver software with great user experiences and high quality.",
+      "Software Developer passionate about building end-to-end web and mobile applications. Committed to learning new technologies, understanding user needs, and delivering high-quality software with great user experiences.",
     avatarSrc: "/images/profile.jpg",
     avatarAlt: "Tarathep Butka - Software Developer",
   },
@@ -32,9 +32,9 @@ export const portfolioData: PortfolioData = {
   /* ─── About ─── */
   about: {
     paragraphs: [
-      'I am a <highlight>Computer Engineering</highlight> graduate from <neon>Khon Kaen University</neon> with a solid foundation in software development and systems thinking. Having completed a 7-month Full Stack Developer internship, I have gained hands-on experience in building end-to-end web applications and collaborating within professional agile teams.',
-      'My approach is driven by a "never-stop-learning" mindset and proactive problem-solving, allowing me to thrive in high-pressure environments. I am eager to apply my technical skills in a real-world setting and am dedicated to honing my expertise as a Software Developer.',
-      'With a long-term goal of transitioning into <green>Project Management</green>, I am committed to delivering high-quality outcomes while continuously expanding my technical and leadership horizons.',
+      'I recently graduated with a Bachelor\'s degree in <highlight>Computer Engineering</highlight> from <neon>Khon Kaen University</neon>. Having completed a 7-month Full Stack Developer internship, I have gained hands-on experience in building end-to-end web applications and am now actively seeking full-time software development opportunities.',
+      'I believe a good developer isn\'t just someone who writes code well, but someone who understands the <highlight>entire picture</highlight> of what they are building and why. I aim to be involved in the full development lifecycle—from requirements gathering and user communication to database design, system analysis, and production deployment.',
+      'I am looking for an environment where I can grow in this direction, collaborate with a team to find the best solutions, and contribute meaningfully at every stage of the project as I work towards my long-term goal in <green>Project Management</green>.',
     ],
     infoCards: [
       {
@@ -55,17 +55,16 @@ export const portfolioData: PortfolioData = {
       company: "Playtorium Solutions",
       duration: "Apr 2025 — Oct 2025",
       bullets: [
-        "Migrated a Node.js backend to NestJS across 8 core modules, including RBAC and User Management, significantly improving system modularity, scalability, and maintainability.",
-        "Architected and developed a Dynamic Form System for tax deduction claims, featuring database-driven UI rendering, complex validation logic, and secure file uploads to AWS S3.",
-        "Engineered an automated employee offboarding system orchestrating secure data flows between NestJS, n8n, and FastAPI microservices.",
-        "Automated the revocation of user access across AWS IAM, GitLab, Jira, and MongoDB.",
-        "Developed and executed comprehensive End-to-End (E2E) tests for all newly developed APIs to ensure code reliability, prevent regressions, and validate data integrity.",
+        "Migrated a Node.js (Express) backend to NestJS across 8 core modules (RBAC, User Management, Reporting), refactored the frontend for new API contracts, and improved modularity, scalability, and security.",
+        "Designed and developed a Dynamic Form System (Database, Backend, and Frontend) for tax deduction claims, replacing manual email processes and enabling HR to update form structures with no code changes.",
+        "Automated employee offboarding by integrating NestJS, n8n, and FastAPI to revoke access across AWS IAM, GitLab, Jira, and MongoDB, complete with token-based auth, audit logging, and email notifications.",
+        "Developed and executed End-to-End (E2E) tests for newly developed APIs to ensure service reliability, prevent regressions, and validate data integrity.",
       ],
       skills: [
         "TypeScript",
         "JavaScript",
         "Python",
-        "React.js",
+        "React",
         "NestJS",
         "FastAPI",
         "n8n",
@@ -73,6 +72,8 @@ export const portfolioData: PortfolioData = {
         "AWS S3",
         "AWS IAM",
         "Jira",
+        "PostgreSQL",
+        "Prisma ORM",
         "System Architecture",
         "Database Design",
       ],
