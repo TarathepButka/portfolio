@@ -18,6 +18,16 @@ export function ScrollToTop() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  useEffect(() => {
+    // Force scroll to top on page refresh
+    if (typeof window !== "undefined") {
+      if (window.history && "scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    }
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

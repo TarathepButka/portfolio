@@ -29,9 +29,9 @@ export function Section({ id, title, children, className = "" }: SectionProps) {
       className={`relative py-20 md:py-28 px-6 md:px-12 lg:px-24 max-w-7xl mx-auto w-full ${className}`}
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? "translateY(0)" : "translateY(30px)",
-        filter: inView ? "blur(0)" : "blur(4px)",
-        transition: "opacity 0.6s ease-out, transform 0.6s ease-out, filter 0.6s ease-out",
+        transform: inView ? "translateY(0)" : "translateY(40px)",
+        filter: inView ? "blur(0)" : "blur(8px)",
+        transition: "opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1), filter 1s cubic-bezier(0.22, 1, 0.36, 1)",
       }}
     >
       {title && (

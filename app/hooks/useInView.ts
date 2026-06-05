@@ -8,7 +8,7 @@ import { useRef, useState, useEffect } from "react";
  * @param threshold - Visibility threshold (0–1)
  * @returns ref to attach to element, and boolean inView state
  */
-export function useInView(threshold = 0.15) {
+export function useInView(threshold = 0.1) {
   const ref = useRef<HTMLElement>(null);
   const [inView, setInView] = useState(false);
 
