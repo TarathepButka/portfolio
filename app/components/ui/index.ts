@@ -15,3 +15,5 @@ export {
   IconByName,
 } from "./icons";
 export { ScrollToTop } from "./ScrollToTop";
+export { Modal } from "./Modal";
+

@@ -7,13 +7,14 @@ import { MenuIcon, CloseIcon } from "@/app/components/ui";
 
 interface NavbarProps {
   items: NavItem[];
+  onResumeClick: () => void;
 }
 
 /**
  *-style Navbar — translucent menu bar with angular aesthetic.
  * Features scroll spy and mobile hamburger menu.
  */
-export function Navbar({ items }: NavbarProps) {
+export function Navbar({ items, onResumeClick }: NavbarProps) {
   const { activeSection, isScrolled } = useScrollSpy(items);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -71,6 +72,15 @@ export function Navbar({ items }: NavbarProps) {
               {item.label}
             </a>
           ))}
+
+          {/* Desktop Resume Button */}
+          <button
+            onClick={onResumeClick}
+            className="ml-2 px-4 py-1.5 border border-[var(--neon-cyan)]/40 hover:border-[var(--neon-cyan)] text-[var(--neon-cyan)] hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] hover:scale-105 rounded font-mono text-xs uppercase tracking-wider transition-all duration-300"
+            style={{ fontFamily: "var(--font-theme-mono)", borderRadius: "2px" }}
+          >
+            Resume
+          </button>
         </div>
 
         {/* Mobile Toggle */}
@@ -99,6 +109,22 @@ export function Navbar({ items }: NavbarProps) {
               {item.label}
             </a>
           ))}
+          
+          {/* Mobile Resume Button */}
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              onResumeClick();
+            }}
+            className="text-left text-[var(--neon-cyan)] hover:text-white transition-colors text-sm py-3 px-4 border-b border-white/5 tracking-[0.1em] uppercase flex items-center gap-3 font-mono"
+            style={{ 
+              animationDelay: `${items.length * 0.05}s`,
+              fontFamily: "var(--font-theme-mono)" 
+            }}
+          >
+            <span className="text-[8px] opacity-60">◇</span>
+            Resume
+          </button>
         </div>
       )}
     </nav>

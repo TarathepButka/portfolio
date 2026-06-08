@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { portfolioData } from "@/app/data/portfolio";
 import {
   BackgroundEffects,
@@ -11,7 +14,7 @@ import {
   ContactSection,
   Footer,
 } from "@/app/components/sections";
-import { ScrollToTop } from "@/app/components/ui";
+import { ScrollToTop, Modal } from "@/app/components/ui";
 
 /**
  * Portfolio page — thin orchestrator.
@@ -27,10 +30,20 @@ export default function PortfolioPage() {
   const { nav, hero, about, experience, projects, skills, achievements, contact, footer } =
     portfolioData;
 
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
+  const handleOpenResume = () => {
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      window.open("/resume.pdf", "_blank");
+    } else {
+      setIsResumeOpen(true);
+    }
+  };
+
   return (
     <>
       <BackgroundEffects />
-      <Navbar items={nav} />
+      <Navbar items={nav} onResumeClick={handleOpenResume} />
       <HeroSection data={hero} />
       <AboutSection data={about} />
       <ExperienceSection data={experience} />
@@ -40,6 +53,13 @@ export default function PortfolioPage() {
       <ContactSection data={contact} />
       <Footer name={footer.name} tagline={footer.tagline} />
       <ScrollToTop />
+
+      <Modal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+        pdfUrl="/resume.pdf"
+      />
     </>
   );
 }
+
